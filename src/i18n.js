@@ -6,7 +6,7 @@ import ar from './locales/ar.json';
 import en from './locales/en.json';
 import fr from './locales/fr.json';
 import tr from './locales/tr.json';
-
+import de from './locales/de.json';
 i18n
   .use(LanguageDetector)
   .use(initReactI18next)
@@ -15,7 +15,8 @@ i18n
       ar: { translation: ar },
       en: { translation: en },
       fr: { translation: fr },
-      tr: { translation: tr }
+      tr: { translation: tr },
+      de: { translation: de }
     },
     fallbackLng: 'en',
     lng: 'en',

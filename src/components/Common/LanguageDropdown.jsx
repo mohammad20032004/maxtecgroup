@@ -21,6 +21,7 @@ const LanguageDropdown = () => {
     { code: 'ar', name: 'العربية', flag: '🇸🇦' },
     { code: 'fr', name: 'Français', flag: '🇫🇷' },
     { code: 'tr', name: 'Türkçe', flag: '🇹🇷' },
+    {code: 'de', name: 'Deutsch', flag: '🇩🇪' }
   ];
 
   const handleClick = (event) => {
@@ -43,7 +44,6 @@ const LanguageDropdown = () => {
     <Box>
       <Button
         onClick={handleClick}
-        startIcon={<LanguageIcon />}
         endIcon={<ExpandMoreIcon />}
         variant="outlined"
         size="small"
@@ -85,7 +85,7 @@ const LanguageDropdown = () => {
               },
             }}
           >
-            <ListItemIcon sx={{ minWidth: 32 }}>
+            <ListItemIcon sx={{ minWidth: 32, mr: 1, ml: 1 }}>
               <span style={{ fontSize: '1.2rem' }}>{language.flag}</span>
             </ListItemIcon>
             <ListItemText primary={language.name} />

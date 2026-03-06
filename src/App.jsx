@@ -3,6 +3,7 @@ import { CssBaseline, Box } from '@mui/material';
 import theme from './theme';
 import Navbar from './components/layout/Navbar';
 import HeroSection from './components/Home/HeroSection';
+import AboutSection from './components/Home/AboutSection';
 
 function App() {
   return (
@@ -14,9 +15,7 @@ function App() {
         {/* Hero Section */}
         <HeroSection />
         
-        <Box id="about" sx={{ minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center', bgcolor: 'grey.100' }}>
-          <h1>About Section</h1>
-        </Box>
+        <AboutSection />
         
         <Box id="services" sx={{ minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
           <h1>Services Section</h1>
