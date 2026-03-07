@@ -1,8 +1,10 @@
 import React from 'react';
-import { Box, Container, Typography, Button, Stack, Paper } from '@mui/material';
+import { Box, Container, Typography, Button, Stack, Paper, useMediaQuery, useTheme } from '@mui/material';
 import { styled, keyframes } from '@mui/material/styles';
 import { useTranslation } from 'react-i18next';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
+import heroBg from '../../assets/hero-bg.png';
+import heroVd from '../../assets/hero-vd.mp4';
 
 const pulse = keyframes`
   0%, 100% { opacity: 1; }
@@ -36,6 +38,10 @@ const BackgroundImage = styled(Box)({
   position: 'absolute',
   inset: 0,
   zIndex: 0,
+  backgroundImage: `url(${heroBg})`,
+  backgroundSize: 'cover',
+  backgroundPosition: 'center',
+  opacity: 0.3,
   '&::after': {
     content: '""',
     position: 'absolute',
@@ -76,6 +82,8 @@ const ScrollIndicator = styled(Box)(({ theme }) => ({
 
 const HeroSection = () => {
   const { t } = useTranslation();
+  const theme = useTheme();
+  const isMdUp = useMediaQuery(theme.breakpoints.up('md'));
 
   const scrollToAbout = () => {
     const aboutSection = document.getElementById('about');
@@ -86,17 +94,48 @@ const HeroSection = () => {
 
   return (
     <HeroWrapper id="home" component="header">
-      <BackgroundImage>
+      {isMdUp ? (
         <Box
+          component="video"
+          autoPlay
+          loop
+          muted
+          playsInline
           sx={{
             position: 'absolute',
             inset: 0,
-            backgroundSize: '40px 40px',
-            backgroundImage: 'linear-gradient(to right, rgba(255,255,255,0.05) 1px, transparent 1px), linear-gradient(to bottom, rgba(255,255,255,0.05) 1px, transparent 1px)',
-            opacity: 0.2,
+            width: '100%',
+            height: '100%',
+            objectFit: 'cover',
+            opacity: 0.5,
+            zIndex: 0,
           }}
-        />
-      </BackgroundImage>
+        >
+          <source src={heroVd} type="video/mp4" />
+        </Box>
+      ) : (
+        <BackgroundImage />
+      )}
+      
+      <Box
+        sx={{
+          position: 'absolute',
+          inset: 0,
+          background: 'linear-gradient(to top, #0a0a0a, rgba(10,10,10,0.8), transparent)',
+          zIndex: 1,
+        }}
+      />
+      
+      <Box
+        sx={{
+          position: 'absolute',
+          inset: 0,
+          backgroundSize: '40px 40px',
+          backgroundImage: 'linear-gradient(to right, rgba(255,255,255,0.05) 1px, transparent 1px), linear-gradient(to bottom, rgba(255,255,255,0.05) 1px, transparent 1px)',
+          opacity: 0.2,
+          zIndex: 2,
+        }}
+      />
 
       <Container 
         maxWidth="lg" 

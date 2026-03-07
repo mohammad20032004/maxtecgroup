@@ -3,7 +3,7 @@ import { CssBaseline, Box } from '@mui/material';
 import theme from './theme';
 import Navbar from './components/layout/Navbar';
 import HeroSection from './components/Home/HeroSection';
-import AboutSection from './components/Home/AboutSection';
+import AboutSection from './components/About/AboutSection';
 
 function App() {
   return (
