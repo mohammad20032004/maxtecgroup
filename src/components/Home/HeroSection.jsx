@@ -4,7 +4,6 @@ import { styled, keyframes } from '@mui/material/styles';
 import { useTranslation } from 'react-i18next';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import heroBg from '../../assets/hero-bg.png';
-import heroVd from '../../assets/hero-vd.mp4';
 
 const pulse = keyframes`
   0%, 100% { opacity: 1; }
@@ -112,7 +111,7 @@ const HeroSection = () => {
             zIndex: 0,
           }}
         >
-          <source src={heroVd} type="video/mp4" />
+          <source src='/hero-vd.mp4' type="video/mp4" />
         </Box>
       ) : (
         <BackgroundImage />
