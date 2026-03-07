@@ -24,13 +24,14 @@ const bounce = keyframes`
 `;
 
 const HeroWrapper = styled(Box)(({ theme }) => ({
-  minHeight: '100vh',
+  minHeight: 'auto',
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'center',
   position: 'relative',
   overflow: 'hidden',
-  paddingTop: theme.spacing(8),
+  paddingTop: theme.spacing(15),
+  paddingBottom: theme.spacing(15),
   background: 'linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%)',
 }));
 
