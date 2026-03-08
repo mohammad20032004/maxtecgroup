@@ -191,10 +191,9 @@ const HeroSection = () => {
 
         <Stack 
           direction={{ xs: 'column', sm: 'row' }} 
-          spacing={{ xs: 2, sm: 3 }} 
           justifyContent="center"
           alignItems="center"
-          sx={{ px: { xs: 2, sm: 0 } }}
+          sx={{ px: { xs: 2, sm: 0 } , gap: { xs: 2, sm: 3 } }}
         >
           <Button
             variant="contained"
@@ -202,6 +201,7 @@ const HeroSection = () => {
             size="large"
             onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
             sx={{
+
               boxShadow: '0 0 20px rgba(255,102,0,0.4)',
               transition: 'all 0.3s ease',
               '&:hover': {
