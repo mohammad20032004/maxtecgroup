@@ -83,7 +83,7 @@ const PricingCard = styled(Card)(({ theme, featured }) => ({
     boxShadow: featured ? `0 20px 60px ${theme.palette.primary.main}40` : theme.shadows[12],
   },
 }));
-
+ 
 const ServicesSection = () => {
   const { t } = useTranslation();
   const theme = useTheme();
@@ -184,6 +184,18 @@ const ServicesSection = () => {
       featured: false,
     },
   ];
+  // التمرير إلى سكشن معيّن في الصفحة (مثلاً سكشن التواصل)
+  const scrollToSection = (sectionId) => {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      const navbarHeight = 80; // تقدير ارتفاع النافبار
+      const elementPosition = element.offsetTop - navbarHeight;
+      window.scrollTo({
+        top: elementPosition,
+        behavior: 'smooth',
+      });
+    }
+  };
 
   return (
     <Box id="services" component="section" sx={{ py: { xs: 10, md: 20 }, bgcolor: '#151515' }}>
@@ -207,7 +219,10 @@ const ServicesSection = () => {
             const IconComponent = service.icon;
             return (
               <Grid item xs={12} sm={6} md={3} key={index}>
-                <ServiceCard sx={{ animationDelay: `${index * 0.1}s` , width: {xs: '100%',  md: 550}}}>
+                <ServiceCard
+                  sx={{ animationDelay: `${index * 0.1}s`, width: { xs: '100%', md: 550 } }}
+                  onClick={() => scrollToSection('contact')}
+                >
                   <CardContent sx={{ p: 4 }}>
                     <Avatar
                       className="service-icon"
@@ -286,10 +301,11 @@ const ServicesSection = () => {
             {pricingPlans.map((plan, index) => (
               <Grid item xs={12} sm={12} md={4} key={index}>
                 <PricingCard featured={plan.featured} sx={{ 
-                  width: {xs: '100%',lg: 350, height: 'auto'}, 
+                  width: {xs: '100%',lg: 350, xl: 400}, 
                   animation: `${fadeIn} 0.6s ease-out`, 
                   animationDelay: `${index * 0.2}s`
-                 }}>
+                 }}
+                 >
                   {plan.featured && (
                     <Box sx={{ position: 'absolute', top: -12, left: '50%', transform: 'translateX(-50%)' }}>
                       <Chip label={t('most_popular')} color="primary" />

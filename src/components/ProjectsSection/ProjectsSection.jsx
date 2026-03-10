@@ -88,7 +88,7 @@ const ProjectsSection = () => {
         <Grid container spacing={{ xs: 3, md: 4 }} justifyContent="center">
           {projects.map((project, index) => (
             <Grid item xs={12} sm={6} md={4} key={index} sx={{ display: 'flex', justifyContent: 'center' }}>
-              <ProjectCard sx={{ animationDelay: `${index * 0.15}s`, width: { xs: '100%', sm: 350, md: 400 } }}>
+              <ProjectCard sx={{ animationDelay: `${index * 0.15}s`, width: { xs: '100%', sm: 350, md: 400 } }} onClick={()=>scrollToSection('home')}>
                 <Box sx={{ position: 'relative', overflow: 'hidden', height: { xs: 200, sm: 220, md: 250 } }}>
                   <CardMedia
                     component="img"

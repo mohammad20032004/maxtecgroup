@@ -7,9 +7,8 @@ import PhoneIcon from '@mui/icons-material/Phone';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 import SendIcon from '@mui/icons-material/Send';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
-import TwitterIcon from '@mui/icons-material/Twitter';
 import GitHubIcon from '@mui/icons-material/GitHub';
-
+import FacebookIcon from '@mui/icons-material/Facebook';
 const ContactCard = styled(Paper)(({ theme }) => ({
   padding: theme.spacing(4),
   borderRadius: theme.spacing(2),
@@ -104,7 +103,7 @@ const ContactSection = () => {
                   Follow Us
                 </Typography>
                 <Stack direction="row" spacing={1}>
-                  {[LinkedInIcon, TwitterIcon, GitHubIcon].map((Icon, i) => (
+                  {[LinkedInIcon, FacebookIcon, GitHubIcon].map((Icon, i) => (
                     <IconButton
                       key={i}
                       sx={{

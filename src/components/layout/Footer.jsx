@@ -2,7 +2,6 @@ import React from 'react';
 import { Box, Container, Typography, Grid, Stack, IconButton, Divider } from '@mui/material';
 import { useTranslation } from 'react-i18next';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
-import TwitterIcon from '@mui/icons-material/Twitter';
 import GitHubIcon from '@mui/icons-material/GitHub';
 import FacebookIcon from '@mui/icons-material/Facebook';
 
@@ -29,7 +28,7 @@ const Footer = () => {
               {t('hero_desc').substring(0, 120)}...
             </Typography>
             <Stack direction="row" spacing={1}>
-              {[LinkedInIcon, TwitterIcon, GitHubIcon, FacebookIcon].map((Icon, i) => (
+              {[LinkedInIcon, FacebookIcon, GitHubIcon, ].map((Icon, i) => (
                 <IconButton
                   key={i}
                   size="small"
