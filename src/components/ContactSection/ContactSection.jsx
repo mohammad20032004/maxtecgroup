@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
-import { Box, Container, Typography, Grid, TextField, Button, Paper, Stack, IconButton } from '@mui/material';
-import { styled } from '@mui/material/styles';
+import { Box, Container, Typography, Grid, TextField, Button, Paper, Stack, IconButton, useMediaQuery, MenuItem } from '@mui/material';
+import { styled, useTheme } from '@mui/material/styles';
 import { useTranslation } from 'react-i18next';
+import emailjs from '@emailjs/browser';
 import EmailIcon from '@mui/icons-material/Email';
 import PhoneIcon from '@mui/icons-material/Phone';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
@@ -33,8 +34,18 @@ const InfoItem = styled(Box)(({ theme }) => ({
 }));
 
 const ContactSection = () => {
-  const { t } = useTranslation();
-  const [formData, setFormData] = useState({ name: '', email: '', message: '' });
+  const { t, i18n } = useTranslation();
+  const theme = useTheme();
+  const isMdUp = useMediaQuery(theme.breakpoints.up('md'));
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    serviceType: '',
+    budget: '',
+    message: '',
+  });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [status, setStatus] = useState({ type: null, message: '' }); // type: 'success' | 'error' | null
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -42,19 +53,79 @@ const ContactSection = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log('Form submitted:', formData);
-    // Add form submission logic here
+    setIsSubmitting(true);
+    setStatus({ type: null, message: '' });
+
+    // قيم EmailJS - استبدلها من حسابك في EmailJS
+    const SERVICE_ID = 'service_h7rvsan';    // استبدلها بـ Service ID من EmailJS
+    const TEMPLATE_ID = 'template_6grkof9';  // استبدلها بـ Template ID من EmailJS
+    const PUBLIC_KEY = 'bIZQeE78a8NkmVsRD'; // استبدلها بـ Public Key من EmailJS
+
+    const selectedServiceLabel = formData.serviceType || t('service_type_other');
+
+    const templateParams = {
+      // هذه الأسماء تتوافق مع القالب الذي ذكرته في EmailJS
+      subject: `New Project Inquiry: ${selectedServiceLabel} | MaxTec Group`,
+      user_name: formData.name,
+      user_email: formData.email,
+      service_type: selectedServiceLabel,
+      budget: formData.budget || t('budget_not_specified'),
+      message: formData.message,
+    };
+
+    emailjs
+      .send(SERVICE_ID, TEMPLATE_ID, templateParams, {
+        publicKey: PUBLIC_KEY,
+      })
+      .then(
+        () => {
+          setStatus({
+            type: 'success',
+            message: t('contact_success_msg') || 'تم استلام طلبك بنجاح، شكراً لثقتك بنا.',
+          });
+          setFormData({
+            name: '',
+            email: '',
+            serviceType: '',
+            budget: '',
+            message: '',
+          });
+        },
+        () => {
+          setStatus({
+            type: 'error',
+            message: t('contact_error_msg') || 'حدث خطأ أثناء إرسال الرسالة. يرجى المحاولة مرة أخرى.',
+          });
+        },
+      )
+      .finally(() => {
+        setIsSubmitting(false);
+      });
   };
 
   const contactInfo = [
-    { icon: EmailIcon, text: 'info@maxtecgroup.co.uk', color: '#FF6600' },
+    { icon: EmailIcon, text: 'maxtecgroup.co@gmail.com', color: '#FF6600' },
     { icon: PhoneIcon, text: '+44 20 1234 5678', color: '#7877C6' },
     { icon: LocationOnIcon, text: 'London, United Kingdom', color: '#FF6767' },
   ];
 
+  const isArabic = i18n.language === 'ar';
+
   return (
-    <Box id="contact" component="section" sx={{ py: { xs: 10, md: 20 }, bgcolor: '#151515' }}>
-      <Container maxWidth="lg">
+    <Box
+      id="contact"
+      component="section"
+      sx={{
+        py: { xs: 10, md: 20 },
+        bgcolor: '#151515',
+      }}
+    >
+      <Container
+        maxWidth="lg"
+        sx={{
+          direction: isArabic ? 'rtl' : 'ltr',
+        }}
+      >
         <Box sx={{ textAlign: 'center', mb: 8 }}>
           <Typography variant="overline" color="primary.main" fontWeight="bold" letterSpacing={2} sx={{ fontSize: { xs: '0.7rem', sm: '0.75rem' } }}>
             {t('contact_info_title')}
@@ -67,8 +138,9 @@ const ContactSection = () => {
           </Typography>
         </Box>
 
-        <Grid container spacing={4} justifyContent={'center'}>
-          <Grid item xs={12} md={5}>
+        <Grid container spacing={isMdUp ? 6 : 4} justifyContent="center" alignItems="stretch">
+          {/* Contact info card */}
+          <Grid item xs={12} md={5} sx={{ order: isMdUp ? 1 : 2 }}>
             <ContactCard elevation={2}>
               <Typography variant="h5" fontWeight="bold" sx={{ mb: 4 }}>
                 {t('contact_info_title')}
@@ -121,13 +193,27 @@ const ContactSection = () => {
             </ContactCard>
           </Grid>
 
-          <Grid item xs={12} md={7}>
+          {/* Contact form card */}
+          <Grid item xs={12} md={7} sx={{ order: isMdUp ? 2 : 1 }}>
             <ContactCard elevation={2}>
               <Typography variant="h5" fontWeight="bold" sx={{ mb: 4 }}>
                 {t('form_btn')}
               </Typography>
               <form onSubmit={handleSubmit}>
                 <Stack spacing={3}>
+                  {status.type && (
+                    <Box
+                      sx={{
+                        p: 1.5,
+                        borderRadius: 1,
+                        fontSize: 14,
+                        bgcolor: status.type === 'success' ? 'success.main' : 'error.main',
+                        color: '#fff',
+                      }}
+                    >
+                      {status.message}
+                    </Box>
+                  )}
                   <TextField
                     fullWidth
                     label={t('form_name')}
@@ -135,6 +221,16 @@ const ContactSection = () => {
                     value={formData.name}
                     onChange={handleChange}
                     required
+                    InputLabelProps={{
+                      sx: {
+                        ...(isArabic && { right: 0, left: 'auto', transformOrigin: 'top right' }),
+                      },
+                    }}
+                    inputProps={{
+                      style: {
+                        textAlign: isArabic ? 'right' : 'left',
+                      },
+                    }}
                   />
                   <TextField
                     fullWidth
@@ -144,7 +240,66 @@ const ContactSection = () => {
                     value={formData.email}
                     onChange={handleChange}
                     required
+                    InputLabelProps={{
+                      sx: {
+                        ...(isArabic && { right: 0, left: 'auto', transformOrigin: 'top right' }),
+                      },
+                    }}
+                    inputProps={{
+                      style: {
+                        textAlign: isArabic ? 'right' : 'left',
+                      },
+                    }}
                   />
+                  <TextField
+                    select
+                    fullWidth
+                    label={t('form_service_type')}
+                    name="serviceType"
+                    value={formData.serviceType}
+                    onChange={handleChange}
+                    required
+                    InputLabelProps={{
+                      sx: {
+                        ...(isArabic && { right: 0, left: 'auto', transformOrigin: 'top right' }),
+                      },
+                    }}
+                    inputProps={{
+                      style: {
+                        textAlign: isArabic ? 'right' : 'left',
+                      },
+                    }}
+                  >
+                    <MenuItem value="Web & App Development">{t('service_type_web')}</MenuItem>
+                    <MenuItem value="AI & Data / Analytics">{t('service_type_ai')}</MenuItem>
+                    <MenuItem value="Cyber Security">{t('service_type_cyber')}</MenuItem>
+                    <MenuItem value="UI/UX Design">{t('service_type_uiux')}</MenuItem>
+                    <MenuItem value="Tech Consulting">{t('service_type_consulting')}</MenuItem>
+                    <MenuItem value="Other">{t('service_type_other')}</MenuItem>
+                  </TextField>
+                  <TextField
+                    select
+                    fullWidth
+                    label={t('form_budget')}
+                    name="budget"
+                    value={formData.budget}
+                    onChange={handleChange}
+                    InputLabelProps={{
+                      sx: {
+                        ...(isArabic && { right: 0, left: 'auto', transformOrigin: 'top right' }),
+                      },
+                    }}
+                    inputProps={{
+                      style: {
+                        textAlign: isArabic ? 'right' : 'left',
+                      },
+                    }}
+                  >
+                    <MenuItem value="£1,000 - £3,000">{t('budget_small')}</MenuItem>
+                    <MenuItem value="£3,000 - £7,000">{t('budget_medium')}</MenuItem>
+                    <MenuItem value="£7,000 - £15,000">{t('budget_large')}</MenuItem>
+                    <MenuItem value="£15,000+">{t('budget_enterprise')}</MenuItem>
+                  </TextField>
                   <TextField
                     fullWidth
                     label={t('form_msg')}
@@ -154,23 +309,34 @@ const ContactSection = () => {
                     value={formData.message}
                     onChange={handleChange}
                     required
+                    InputLabelProps={{
+                      sx: {
+                        ...(isArabic && { right: 0, left: 'auto', transformOrigin: 'top right' }),
+                      },
+                    }}
+                    inputProps={{
+                      style: {
+                        textAlign: isArabic ? 'right' : 'left',
+                      },
+                    }}
                   />
                   <Button
                     type="submit"
                     variant="contained"
                     size="large"
                     endIcon={<SendIcon />}
+                    disabled={isSubmitting}
                     sx={{
                       py: 1.5,
                       boxShadow: '0 0 20px rgba(255,102,0,0.3)',
                       '&:hover': {
-                        boxShadow: '0 0 30px rgba(255,102,0,0.5)',
-                        transform: 'translateY(-2px)',
+                        boxShadow: !isSubmitting ? '0 0 30px rgba(255,102,0,0.5)' : '0 0 20px rgba(255,102,0,0.3)',
+                        transform: !isSubmitting ? 'translateY(-2px)' : 'none',
                       },
                       transition: 'all 0.3s ease',
                     }}
                   >
-                    {t('form_btn')}
+                    {isSubmitting ? t('sending') || 'جاري الإرسال...' : t('form_btn')}
                   </Button>
                 </Stack>
               </form>

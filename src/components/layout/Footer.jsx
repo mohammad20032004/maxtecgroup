@@ -75,7 +75,7 @@ const Footer = () => {
             </Typography>
             <Stack spacing={1}>
               <Typography variant="body2" color="grey.400">
-                📧 info@maxtecgroup.co.uk
+                📧 maxtecgroup.co@gmail.com
               </Typography>
               <Typography variant="body2" color="grey.400">
                 📞 +44 20 1234 5678
