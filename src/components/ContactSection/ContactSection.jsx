@@ -57,13 +57,13 @@ const ContactSection = () => {
     <Box id="contact" component="section" sx={{ py: { xs: 10, md: 20 }, bgcolor: '#151515' }}>
       <Container maxWidth="lg">
         <Box sx={{ textAlign: 'center', mb: 8 }}>
-          <Typography variant="overline" color="primary.main" fontWeight="bold" letterSpacing={2}>
+          <Typography variant="overline" color="primary.main" fontWeight="bold" letterSpacing={2} sx={{ fontSize: { xs: '0.7rem', sm: '0.75rem' } }}>
             {t('contact_info_title')}
           </Typography>
-          <Typography variant="h2" sx={{ mt: 1, mb: 2, color: 'white' }}>
+          <Typography variant="h2" sx={{ mt: 1, mb: 2, color: 'white', fontSize: { xs: '1.75rem', sm: '2.5rem', md: '3rem' } }}>
             {t('nav_contact')}
           </Typography>
-          <Typography variant="body1" color="grey.400" sx={{ maxWidth: 600, mx: 'auto' }}>
+          <Typography variant="body1" color="grey.400" sx={{ maxWidth: 600, mx: 'auto', fontSize: { xs: '0.9rem', sm: '1rem' } }}>
             {t('contact_info_desc')}
           </Typography>
         </Box>

@@ -28,8 +28,23 @@ const theme = createTheme({
     h3: {
       fontWeight: 700,
     },
+    h5: {
+      fontWeight: 700,
+    },
+    h6: {
+      fontWeight: 700,
+    },
     button: {
       fontWeight: 700,
+    },
+  },
+  breakpoints: {
+    values: {
+      xs: 0,
+      sm: 600,
+      md: 960,
+      lg: 1280,
+      xl: 1920,
     },
   },
   components: {

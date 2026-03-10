@@ -155,7 +155,7 @@ const HeroSection = () => {
         <Typography 
           variant="h1" 
           sx={{ 
-            fontSize: { xs: '2.5rem', sm: '3.5rem', md: '5rem' }, 
+            fontSize: { xs: '1.75rem', sm: '2.5rem', md: '5rem' }, 
             mb: { xs: 2, md: 3 }, 
             lineHeight: 1.1,
             fontWeight: 'bold'
@@ -168,7 +168,7 @@ const HeroSection = () => {
           <GradientText 
             variant="h1" 
             component="span" 
-            sx={{ fontSize: { xs: '2.5rem', sm: '3.5rem', md: '5rem' } }}
+            sx={{ fontSize: { xs: '1.75rem', sm: '2.5rem', md: '5rem' } }}
           >
             {t('hero_title_2')}
           </GradientText>
@@ -178,7 +178,7 @@ const HeroSection = () => {
           variant="body1"
           color="text.secondary"
           sx={{ 
-            fontSize: { xs: '1rem', sm: '1.1rem', md: '1.25rem' }, 
+            fontSize: { xs: '0.9rem', sm: '1.1rem', md: '1.25rem' }, 
             maxWidth: { xs: '90%', sm: 'md' }, 
             mx: 'auto', 
             mb: { xs: 4, md: 5 }, 

@@ -22,10 +22,10 @@ const Footer = () => {
       <Container maxWidth="lg">
         <Grid container spacing={4}>
           <Grid item xs={12} md={4}>
-            <Typography variant="h5" fontWeight="bold" sx={{ mb: 2, color: 'primary.main' }}>
+            <Typography variant="h5" fontWeight="bold" sx={{ mb: 2, color: 'primary.main', fontSize: { xs: '1.25rem', md: '1.5rem' } }}>
               MaxTec Group
             </Typography>
-            <Typography variant="body2" color="grey.400" sx={{ mb: 3, lineHeight: 1.8 }}>
+            <Typography variant="body2" color="grey.400" sx={{ mb: 3, lineHeight: 1.8, fontSize: { xs: '0.85rem', md: '0.875rem' } }}>
               {t('hero_desc').substring(0, 120)}...
             </Typography>
             <Stack direction="row" spacing={1}>
@@ -47,7 +47,7 @@ const Footer = () => {
           </Grid>
 
           <Grid item xs={12} md={4}>
-            <Typography variant="h6" fontWeight="bold" sx={{ mb: 2 }}>
+            <Typography variant="h6" fontWeight="bold" sx={{ mb: 2, fontSize: { xs: '1rem', md: '1.25rem' } }}>
               Quick Links
             </Typography>
             <Stack spacing={1}>
@@ -71,7 +71,7 @@ const Footer = () => {
           </Grid>
 
           <Grid item xs={12} md={4}>
-            <Typography variant="h6" fontWeight="bold" sx={{ mb: 2 }}>
+            <Typography variant="h6" fontWeight="bold" sx={{ mb: 2, fontSize: { xs: '1rem', md: '1.25rem' } }}>
               {t('contact_info_title')}
             </Typography>
             <Stack spacing={1}>

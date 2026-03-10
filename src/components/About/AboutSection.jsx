@@ -89,6 +89,7 @@ const AboutSection = () => {
           sx={{
             mb: 3,
             fontWeight: 800,
+            fontSize: { xs: '1.75rem', sm: '2.5rem', md: '3rem' },
             '& span': {
               borderBottom: '4px solid',
               borderColor: 'primary.main',
@@ -99,23 +100,22 @@ const AboutSection = () => {
           <span>{t('about_title')}</span>
         </Typography>
 
-        <Typography variant="body1" color="text.secondary" sx={{ mb: 2, lineHeight: 1.8, fontSize: '1.1rem' }}>
+        <Typography variant="body1" color="text.secondary" sx={{ mb: 2, lineHeight: 1.8, fontSize: { xs: '0.9rem', sm: '1rem', md: '1.1rem' } }}>
           {t('about_p1')}
         </Typography>
 
-        <Typography variant="body1" color="text.secondary" sx={{ mb: 4, lineHeight: 1.8, fontSize: '1.1rem' }}>
+        <Typography variant="body1" color="text.secondary" sx={{ mb: 4, lineHeight: 1.8, fontSize: { xs: '0.9rem', sm: '1rem', md: '1.1rem' } }}>
           {t('about_p2')}
         </Typography>
 
-{features.map((feature, index) => (
-           
-              <FeatureItem>
- <CheckCircleIcon sx={{ color: 'primary.main', fontSize: 24 }} />
-                <Typography variant="body1" fontWeight="600">
-                  {feature.label}
-                </Typography>
-</FeatureItem>))}
+        {features.map((feature, index) => (
 
+          <FeatureItem>
+            <CheckCircleIcon sx={{ color: 'primary.main', fontSize: 24 }} />
+            <Typography variant="body1" fontWeight="600">
+              {feature.label}
+            </Typography>
+          </FeatureItem>))}
 
         <Grid container spacing={2} justifyContent={'center'}>
           {stats.map((stat, index) => {

@@ -55,18 +55,18 @@ const ProjectsSection = () => {
     <Box id="projects" component="section" sx={{ py: { xs: 10, md: 20 }, bgcolor: 'background.default' }}>
       <Container maxWidth="lg">
         <Box sx={{ textAlign: 'center', mb: 8 }}>
-          <Typography variant="overline" color="primary.main" fontWeight="bold" letterSpacing={2}>
+          <Typography variant="overline" color="primary.main" fontWeight="bold" letterSpacing={2} sx={{ fontSize: { xs: '0.7rem', sm: '0.75rem' } }}>
             {t('projects_subtitle')}
           </Typography>
-          <Typography variant="h2" sx={{ mt: 1, mb: 2 }}>
+          <Typography variant="h2" sx={{ mt: 1, mb: 2, fontSize: { xs: '1.75rem', sm: '2.5rem', md: '3rem' } }}>
             {t('projects_title')}
           </Typography>
         </Box>
 
-        <Grid container spacing={4}>
+        <Grid container spacing={2} justifyContent={'center'} p={0}>
           {projects.map((project, index) => (
             <Grid item xs={12} md={4} key={index}>
-              <ProjectCard sx={{ animationDelay: `${index * 0.15}s` }}>
+              <ProjectCard sx={{ animationDelay: `${index * 0.15}s`, width: {xs: 300, sm: 320, md: 400} }}>
                 <Box sx={{ position: 'relative', overflow: 'hidden', height: 250 }}>
                   <CardMedia
                     component="img"
