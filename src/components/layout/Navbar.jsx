@@ -19,6 +19,7 @@ import {
 import { styled } from '@mui/material/styles';
 import MenuIcon from '@mui/icons-material/Menu';
 import LanguageDropdown from '../Common/LanguageDropdown';
+import Logo from '../../assets/Logo.png';
 
 const StyledAppBar = styled(AppBar)(({ theme }) => ({
   background: 'rgba(10, 10, 10, 0.95)',
@@ -41,10 +42,10 @@ const NavLink = styled(Button)(({ theme }) => ({
   },
 }));
 
-const Logo = styled(Box)(({ theme }) => ({
+const LogoBox = styled(Box)(({ theme }) => ({
   display: 'flex',
   alignItems: 'center',
-  gap: theme.spacing(0.5),
+  gap: theme.spacing(1),
   cursor: 'pointer',
   transition: 'transform 0.3s ease',
   '&:hover': {
@@ -117,37 +118,17 @@ const Navbar = () => {
     <StyledAppBar position="fixed" elevation={0}>
       <Container maxWidth="xl">
         <Toolbar disableGutters sx={{ justifyContent: 'space-between', py: 1 }}>
-          <Logo onClick={() => scrollToSection('home')}>
+          <LogoBox onClick={() => scrollToSection('home')}>
             <Box
+              component="img"
+              src={Logo}
+              alt="MaxTec Group"
               sx={{
-                width: 40,
-                height: 40,
-                borderRadius: '10px',
-                background: `linear-gradient(135deg, ${theme.palette.primary.main}, ${theme.palette.primary.dark})`,
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                mr: 1,
+                height: 50,
+                width: 'auto',
               }}
-            >
-              <Typography variant="h6" color="white" component="span">
-                M
-              </Typography>
-            </Box>
-            <Box>
-              <Typography variant="h6" fontWeight="bold" color="white" component="div">
-                MaxTec
-              </Typography>
-              <Typography 
-                variant="caption" 
-                color="primary.main" 
-                component="div"
-                sx={{ lineHeight: 1, mt: -0.5 }}
-              >
-                GROUP
-              </Typography>
-            </Box>
-          </Logo>
+            />
+          </LogoBox>
 
           {!isMobile && (
             <Box sx={{ display: 'flex', gap: 1 }}>
