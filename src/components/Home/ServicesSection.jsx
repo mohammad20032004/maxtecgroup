@@ -1,6 +1,6 @@
 import React from 'react';
 import { Box, Container, Typography, Grid, Card, CardContent, Avatar, Stack, Button, Chip, Paper } from '@mui/material';
-import { styled, keyframes } from '@mui/material/styles';
+import { styled, keyframes, useTheme } from '@mui/material/styles';
 import { useTranslation } from 'react-i18next';
 import CodeIcon from '@mui/icons-material/Code';
 import PsychologyIcon from '@mui/icons-material/Psychology';
@@ -76,14 +76,17 @@ const PricingCard = styled(Card)(({ theme, featured }) => ({
   background: featured ? `linear-gradient(135deg, ${theme.palette.primary.main}15, transparent)` : theme.palette.background.paper,
   transition: 'all 0.4s ease',
   position: 'relative',
+  transform: featured ? 'scale(1.05)' : 'scale(1)',
+  zIndex: featured ? 10 : 1,
   '&:hover': {
-    transform: 'translateY(-12px)',
-    boxShadow: theme.shadows[20],
+    transform: featured ? 'scale(1.08)' : 'translateY(-8px)',
+    boxShadow: featured ? `0 20px 60px ${theme.palette.primary.main}40` : theme.shadows[12],
   },
 }));
 
 const ServicesSection = () => {
   const { t } = useTranslation();
+  const theme = useTheme();
 
   const services = [
     {
@@ -158,23 +161,26 @@ const ServicesSection = () => {
   const pricingPlans = [
     {
       name: t('starter_plan'),
+      desc: t('starter_desc'),
       price: '£1,500',
-      period: '/شهر',
-      features: ['موقع ويب أساسي', 'دعم فني', 'تحديثات شهرية', 'استضافة', 'شهادة SSL'],
+      period: '/month',
+      features: [t('ssl_certificate'), t('hosting'), t('monthly_updates'), t('support_24_7')],
       featured: false,
     },
     {
       name: t('professional_plan'),
+      desc: t('professional_desc'),
       price: '£3,500',
-      period: '/شهر',
-      features: ['تطبيق ويب متقدم', 'دعم 24/7', 'تحديثات أسبوعية', 'استضافة احترافية', 'تحليلات متقدمة', 'نسخ احتياطية يومية'],
+      period: '/month',
+      features: [t('analytics'), t('enterprise_hosting'), t('weekly_updates'), t('support_24_7'), t('daily_backups')],
       featured: true,
     },
     {
       name: t('enterprise_plan'),
-      price: 'مخصص',
+      desc: t('enterprise_desc'),
+      price: t('custom_pricing'),
       period: '',
-      features: ['حل مخصص كامل', 'فريق مخصص', 'دعم فوري', 'استضافة مؤسسية', 'أمان عالي', 'تدريب شامل', 'SLA مضمون'],
+      features: [t('custom_solution'), t('dedicated_team'), t('priority_support'), t('enterprise_hosting'), t('high_security'), t('training'), t('sla_guarantee')],
       featured: false,
     },
   ];
@@ -249,10 +255,10 @@ const ServicesSection = () => {
           <Typography variant="h3" sx={{ textAlign: 'center', mb: 6, fontSize: { xs: '1.5rem', md: '2rem' }, fontWeight: 'bold' }}>
             {t('why_choose_us')}
           </Typography>
-          <Grid container spacing={3}>
+          <Grid container spacing={3} justifyContent={'center'}>
             {whyChoose.map((item, index) => (
               <Grid item xs={12} sm={6} md={3} key={index}>
-                <WhyChooseCard>
+                <WhyChooseCard sx={{width: {xs: '100%', sm: 250, md: 400}, height: 250}}>
                   <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, mb: 2 }}>
                     <StarIcon sx={{ color: 'primary.main', fontSize: 28 }} />
                     <Typography variant="h6" fontWeight="bold">
@@ -276,20 +282,23 @@ const ServicesSection = () => {
           <Typography variant="body1" color="grey.400" sx={{ textAlign: 'center', mb: 6 }}>
             {t('pricing_desc')}
           </Typography>
-          <Grid container spacing={3}>
+          <Grid container spacing={3} sx={{ justifyContent: 'center', alignItems: 'center' }}>
             {pricingPlans.map((plan, index) => (
-              <Grid item xs={12} md={4} key={index}>
-                <PricingCard featured={plan.featured}>
+              <Grid item xs={12} sm={12} md={4} key={index}>
+                <PricingCard featured={plan.featured} sx={{ width: '100%' }}>
                   {plan.featured && (
                     <Box sx={{ position: 'absolute', top: -12, left: '50%', transform: 'translateX(-50%)' }}>
-                      <Chip label="الأكثر شهرة" color="primary" />
+                      <Chip label={t('most_popular')} color="primary" />
                     </Box>
                   )}
                   <CardContent sx={{ p: 4, pt: plan.featured ? 6 : 4 }}>
-                    <Typography variant="h5" fontWeight="bold" sx={{ mb: 2 }}>
+                    <Typography variant="h5" fontWeight="bold" sx={{ mb: 1 }}>
                       {plan.name}
                     </Typography>
-                    <Box sx={{ mb: 3 }}>
+                    <Typography variant="body2" color="text.secondary" sx={{ mb: 3 }}>
+                      {plan.desc}
+                    </Typography>
+                    <Box sx={{ mb: 3, pb: 3, borderBottom: `1px solid ${theme.palette.divider}` }}>
                       <Typography variant="h3" fontWeight="bold" color="primary.main">
                         {plan.price}
                       </Typography>
