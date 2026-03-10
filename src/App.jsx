@@ -6,8 +6,8 @@ import Footer from './components/layout/Footer';
 import HeroSection from './components/Home/HeroSection';
 import AboutSection from './components/About/AboutSection';
 import ServicesSection from './components/Home/ServicesSection';
-import ProjectsSection from './components/ProjectsSection/ProjectsSection';
 import ContactSection from './components/ContactSection/ContactSection';
+import ProjectsSection from './components/ProjectsSection/ProjectsSection';
 function App() {
   return (
     <ThemeProvider theme={theme}>

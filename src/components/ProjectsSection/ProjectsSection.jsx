@@ -1,4 +1,3 @@
-import React from 'react';
 import { Box, Container, Typography, Grid, Card, CardMedia, CardContent, Chip, Stack } from '@mui/material';
 import { styled, keyframes } from '@mui/material/styles';
 import { useTranslation } from 'react-i18next';
@@ -12,6 +11,8 @@ const ProjectCard = styled(Card)(({ theme }) => ({
   height: '100%',
   borderRadius: theme.spacing(2),
   overflow: 'hidden',
+  maxWidth: 350,
+  margin: '0 auto',
   transition: 'all 0.4s ease',
   animation: `${scaleIn} 0.5s ease-out`,
   cursor: 'pointer',
@@ -25,6 +26,9 @@ const ProjectCard = styled(Card)(({ theme }) => ({
       opacity: 1,
     },
   },
+  [theme.breakpoints.down('sm')]: {
+    maxWidth: '100%',
+  },
 }));
 
 const ProjectsSection = () => {
@@ -32,49 +36,69 @@ const ProjectsSection = () => {
 
   const projects = [
     {
-      title: 'E-Commerce Platform',
-      desc: 'Full-stack online shopping solution',
+      title: t('project_1_title'),
+      desc: t('project_1_desc'),
       image: 'https://images.unsplash.com/photo-1557821552-17105176677c?w=800&q=80',
       tags: ['React', 'Node.js', 'MongoDB'],
     },
     {
-      title: 'AI Analytics Dashboard',
-      desc: 'Real-time data visualization system',
+      title: t('project_2_title'),
+      desc: t('project_2_desc'),
       image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80',
       tags: ['Python', 'TensorFlow', 'React'],
     },
     {
-      title: 'Mobile Banking App',
-      desc: 'Secure financial management app',
+      title: t('project_3_title'),
+      desc: t('project_3_desc'),
       image: 'https://images.unsplash.com/photo-1563986768609-322da13575f3?w=800&q=80',
       tags: ['React Native', 'Firebase'],
+    },
+    {
+      title: t('project_4_title'),
+      desc: t('project_4_desc'),
+      image: 'https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&q=80',
+      tags: ['Vue.js', 'Laravel', 'PostgreSQL'],
+    },
+    {
+      title: t('project_5_title'),
+      desc: t('project_5_desc'),
+      image: 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=800&q=80',
+      tags: ['Next.js', 'Strapi', 'AWS'],
+    },
+    {
+      title: t('project_6_title'),
+      desc: t('project_6_desc'),
+      image: 'https://images.unsplash.com/photo-1461896836934-ffe607ba8211?w=800&q=80',
+      tags: ['Flutter', 'Firebase', 'Health API'],
     },
   ];
 
   return (
-    <Box id="projects" component="section" sx={{ py: { xs: 10, md: 20 }, bgcolor: 'background.default' }}>
+    <Box id="projects" component="section" sx={{ py: { xs: 8, md: 12, lg: 20 }, bgcolor: 'background.default' }}>
       <Container maxWidth="lg">
-        <Box sx={{ textAlign: 'center', mb: 8 }}>
-          <Typography variant="overline" color="primary.main" fontWeight="bold" letterSpacing={2} sx={{ fontSize: { xs: '0.7rem', sm: '0.75rem' } }}>
+        <Box sx={{ textAlign: 'center', mb: { xs: 6, md: 8 } }}>
+          <Typography variant="overline" color="primary.main" fontWeight="bold" letterSpacing={2}>
             {t('projects_subtitle')}
           </Typography>
-          <Typography variant="h2" sx={{ mt: 1, mb: 2, fontSize: { xs: '1.75rem', sm: '2.5rem', md: '3rem' } }}>
+          <Typography variant="h2" sx={{ mt: 1, mb: 2, fontSize: { xs: '2rem', md: '3rem' }, color: 'white' }}>
             {t('projects_title')}
           </Typography>
         </Box>
 
-        <Grid container spacing={2} justifyContent={'center'} p={0}>
+        <Grid container spacing={{ xs: 3, md: 4 }} justifyContent="center">
           {projects.map((project, index) => (
-            <Grid item xs={12} md={4} key={index}>
-              <ProjectCard sx={{ animationDelay: `${index * 0.15}s`, width: {xs: 300, sm: 320, md: 400} }}>
-                <Box sx={{ position: 'relative', overflow: 'hidden', height: 250 }}>
+            <Grid item xs={12} sm={6} md={4} key={index} sx={{ display: 'flex', justifyContent: 'center' }}>
+              <ProjectCard sx={{ animationDelay: `${index * 0.15}s`, width: { xs: '100%', sm: 350, md: 400 } }}>
+                <Box sx={{ position: 'relative', overflow: 'hidden', height: { xs: 200, sm: 220, md: 250 } }}>
                   <CardMedia
                     component="img"
                     image={project.image}
                     alt={project.title}
                     className="project-image"
+                    loading="lazy"
                     sx={{
                       height: '100%',
+                      objectFit: 'cover',
                       transition: 'transform 0.4s ease',
                     }}
                   />
@@ -89,8 +113,8 @@ const ProjectsSection = () => {
                     }}
                   />
                 </Box>
-                <CardContent sx={{ p: 3 }}>
-                  <Typography variant="h6" fontWeight="bold" sx={{ mb: 1 }}>
+                <CardContent sx={{ p: { xs: 2, md: 3 } }}>
+                  <Typography variant="h6" fontWeight="bold" sx={{ mb: 1, fontSize: { xs: '1rem', md: '1.25rem' } }}>
                     {project.title}
                   </Typography>
                   <Typography variant="body2" color="text.secondary" sx={{ mb: 2 }}>
@@ -98,7 +122,16 @@ const ProjectsSection = () => {
                   </Typography>
                   <Stack direction="row" spacing={1} flexWrap="wrap" useFlexGap>
                     {project.tags.map((tag, i) => (
-                      <Chip key={i} label={tag} size="small" sx={{ bgcolor: 'primary.main', color: 'white', fontSize: '0.75rem' }} />
+                      <Chip 
+                        key={i} 
+                        label={tag} 
+                        size="small" 
+                        sx={{ 
+                          bgcolor: 'primary.main', 
+                          color: 'white', 
+                          fontSize: { xs: '0.7rem', md: '0.75rem' } 
+                        }} 
+                      />
                     ))}
                   </Stack>
                 </CardContent>

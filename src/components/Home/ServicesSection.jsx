@@ -187,7 +187,7 @@ const ServicesSection = () => {
 
   return (
     <Box id="services" component="section" sx={{ py: { xs: 10, md: 20 }, bgcolor: '#151515' }}>
-      <Container maxWidth="lg">
+      <Container maxWidth="xl">
         {/* Header */}
         <Box sx={{ textAlign: 'center', mb: 10 }}>
           <Typography variant="overline" color="primary.main" fontWeight="bold" letterSpacing={2} sx={{ fontSize: { xs: '0.7rem', sm: '0.75rem' } }}>
@@ -202,12 +202,12 @@ const ServicesSection = () => {
         </Box>
 
         {/* Services Grid */}
-        <Grid container spacing={3} sx={{ mb: 10 }}>
+        <Grid container spacing={3} sx={{ mb: 10 }} justifyContent={'center'}>
           {services.map((service, index) => {
             const IconComponent = service.icon;
             return (
               <Grid item xs={12} sm={6} md={3} key={index}>
-                <ServiceCard sx={{ animationDelay: `${index * 0.1}s` , width: {xs: '100%',  md: 600}}}>
+                <ServiceCard sx={{ animationDelay: `${index * 0.1}s` , width: {xs: '100%',  md: 550}}}>
                   <CardContent sx={{ p: 4 }}>
                     <Avatar
                       className="service-icon"
@@ -258,7 +258,7 @@ const ServicesSection = () => {
           <Grid container spacing={3} justifyContent={'center'}>
             {whyChoose.map((item, index) => (
               <Grid item xs={12} sm={6} md={3} key={index}>
-                <WhyChooseCard sx={{width: {xs: '100%', sm: 250, md: 400}, height: 250}}>
+                <WhyChooseCard sx={{width: {xs: '100%', sm: 350, md: 400}, height: {xs: 'auto',sm:300, md: 300}, animationDelay: `${index * 0.1}s`}}>
                   <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, mb: 2 }}>
                     <StarIcon sx={{ color: 'primary.main', fontSize: 28 }} />
                     <Typography variant="h6" fontWeight="bold">
@@ -282,10 +282,14 @@ const ServicesSection = () => {
           <Typography variant="body1" color="grey.400" sx={{ textAlign: 'center', mb: 6 }}>
             {t('pricing_desc')}
           </Typography>
-          <Grid container spacing={3} sx={{ justifyContent: 'center', alignItems: 'center' }}>
+          <Grid container spacing={4} sx={{ justifyContent: 'center', alignItems: 'center' }}>
             {pricingPlans.map((plan, index) => (
               <Grid item xs={12} sm={12} md={4} key={index}>
-                <PricingCard featured={plan.featured} sx={{ width: '100%' }}>
+                <PricingCard featured={plan.featured} sx={{ 
+                  width: {xs: '100%',lg: 350, height: 'auto'}, 
+                  animation: `${fadeIn} 0.6s ease-out`, 
+                  animationDelay: `${index * 0.2}s`
+                 }}>
                   {plan.featured && (
                     <Box sx={{ position: 'absolute', top: -12, left: '50%', transform: 'translateX(-50%)' }}>
                       <Chip label={t('most_popular')} color="primary" />

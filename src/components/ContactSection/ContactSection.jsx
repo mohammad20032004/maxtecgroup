@@ -68,7 +68,7 @@ const ContactSection = () => {
           </Typography>
         </Box>
 
-        <Grid container spacing={4}>
+        <Grid container spacing={4} justifyContent={'center'}>
           <Grid item xs={12} md={5}>
             <ContactCard elevation={2}>
               <Typography variant="h5" fontWeight="bold" sx={{ mb: 4 }}>

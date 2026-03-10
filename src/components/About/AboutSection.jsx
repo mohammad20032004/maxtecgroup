@@ -82,7 +82,7 @@ const AboutSection = () => {
         pointerEvents: 'none',
       }
     }}>
-      <Container maxWidth="xl+" sx={{ position: 'relative', zIndex: 1 }}>
+      <Container maxWidth="lg" sx={{ position: 'relative', zIndex: 1 }}>
 
         <Typography
           variant="h2"
@@ -117,7 +117,7 @@ const AboutSection = () => {
             </Typography>
           </FeatureItem>))}
 
-        <Grid container spacing={2} justifyContent={'center'}>
+        <Grid container spacing={2} justifyContent={'center'} pt={4}>
           {stats.map((stat, index) => {
             const IconComponent = stat.icon;
             return (

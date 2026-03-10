@@ -124,7 +124,7 @@ const Navbar = () => {
               src={Logo}
               alt="MaxTec Group"
               sx={{
-                height: 50,
+                height: 65,
                 width: 'auto',
               }}
             />
