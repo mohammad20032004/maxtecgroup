@@ -27,22 +27,29 @@ const Footer = () => {
             <Typography variant="body2" color="grey.400" sx={{ mb: 3, lineHeight: 1.8, fontSize: { xs: '0.85rem', md: '0.875rem' } }}>
               {t('hero_desc').substring(0, 120)}...
             </Typography>
-            <Stack direction="row" spacing={1}>
-              {[LinkedInIcon, FacebookIcon, GitHubIcon, ].map((Icon, i) => (
-                <IconButton
-                  key={i}
-                  size="small"
-                  sx={{
-                    bgcolor: 'rgba(255,255,255,0.1)',
-                    color: 'white',
-                    '&:hover': { bgcolor: 'primary.main', transform: 'translateY(-4px)' },
-                    transition: 'all 0.3s ease',
-                  }}
-                >
-                  <Icon fontSize="small" />
-                </IconButton>
-              ))}
-            </Stack>
+                <Stack direction="row" spacing={1}>
+                  {[
+                    { Icon: LinkedInIcon, href: '#' },
+                    { Icon: FacebookIcon, href: 'https://www.facebook.com/share/14XnwSYsWeS/' },
+                    { Icon: GitHubIcon, href: 'https://github.com/maxtecgroup' },
+                  ].map(({ Icon, href }, i) => (
+                    <IconButton
+                      key={i}
+                      component="a"
+                      href={href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      sx={{
+                        bgcolor: 'primary.main',
+                        color: 'white',
+                        '&:hover': { bgcolor: 'primary.dark', transform: 'translateY(-4px)' },
+                        transition: 'all 0.3s ease',
+                      }}
+                    >
+                      <Icon />
+                    </IconButton>
+                  ))}
+                </Stack>
           </Grid>
 
           <Grid item xs={12} md={4}>

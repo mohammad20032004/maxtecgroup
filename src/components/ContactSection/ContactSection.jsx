@@ -175,9 +175,17 @@ const ContactSection = () => {
                   Follow Us
                 </Typography>
                 <Stack direction="row" spacing={1}>
-                  {[LinkedInIcon, FacebookIcon, GitHubIcon].map((Icon, i) => (
+                  {[
+                    { Icon: LinkedInIcon, href: '#' },
+                    { Icon: FacebookIcon, href: 'https://www.facebook.com/share/14XnwSYsWeS/' },
+                    { Icon: GitHubIcon, href: 'https://github.com/maxtecgroup' },
+                  ].map(({ Icon, href }, i) => (
                     <IconButton
                       key={i}
+                      component="a"
+                      href={href}
+                      target="_blank"
+                      rel="noopener noreferrer"
                       sx={{
                         bgcolor: 'primary.main',
                         color: 'white',
