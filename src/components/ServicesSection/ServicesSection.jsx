@@ -49,7 +49,6 @@ const ServiceCard = styled(Card)(({ theme }) => ({
     },
     '& .service-icon': {
       transform: 'scale(1.1) rotate(5deg)',
-      background: `linear-gradient(135deg, ${theme.palette.primary.main}, ${theme.palette.secondary.main})`,
     },
     '& .arrow-icon': {
       transform: 'translateX(8px)',

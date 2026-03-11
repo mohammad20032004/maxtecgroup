@@ -5,7 +5,7 @@ import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import GitHubIcon from '@mui/icons-material/GitHub';
 import FacebookIcon from '@mui/icons-material/Facebook';
 
-const Footer = () => {
+const Footer = ({ onOpenPrivacy }) => {
   const { t } = useTranslation();
 
   const quickLinks = [
@@ -89,6 +89,21 @@ const Footer = () => {
               </Typography>
               <Typography variant="body2" color="grey.400">
                 📍 London, United Kingdom
+              </Typography>
+              <Typography
+                component="button"
+                type="button"
+                onClick={onOpenPrivacy}
+                variant="body2"
+                style={{
+                  textAlign: 'left',
+                  background: 'transparent',
+                  border: 'none',
+                  padding: 0,
+                  cursor: 'pointer',
+                }}
+              >
+                <span style={{ color: 'rgba(255,255,255,0.7)' }}>{t('privacy_title')}</span>
               </Typography>
             </Stack>
           </Grid>

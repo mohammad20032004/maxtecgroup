@@ -1,3 +1,4 @@
+import React, { useState } from 'react';
 import { ThemeProvider } from '@mui/material/styles';
 import { CssBaseline, Box } from '@mui/material';
 import theme from './theme';
@@ -8,7 +9,10 @@ import AboutSection from './components/About/AboutSection';
 import ServicesSection from './components/ServicesSection/ServicesSection';
 import ContactSection from './components/ContactSection/ContactSection';
 import ProjectsSection from './components/ProjectsSection/ProjectsSection';
+import PrivacyPolicyModal from './components/Common/PrivacyPolicyModal';
 function App() {
+  const [privacyOpen, setPrivacyOpen] = useState(false);
+
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
@@ -19,7 +23,8 @@ function App() {
         <ServicesSection />
         <ProjectsSection />
         <ContactSection />
-        <Footer />
+        <Footer onOpenPrivacy={() => setPrivacyOpen(true)} />
+        <PrivacyPolicyModal open={privacyOpen} onClose={() => setPrivacyOpen(false)} />
       </Box>
     </ThemeProvider>
   );

@@ -60,9 +60,9 @@ const AboutSection = () => {
   ];
 
   const stats = [
-    { icon: TrendingUpIcon, number: '150+', label: t('projects_completed') || 'مشروع مكتمل' },
-    { icon: GroupsIcon, number: '50+', label: t('happy_clients') || 'عميل راضي' },
-    { icon: StarIcon, number: '4.9', label: t('rating') || 'تقييم' },
+    { icon: TrendingUpIcon, number: t('stats_projects_number') || '10+', label: t('projects_completed') || 'مشروع مكتمل' },
+    { icon: GroupsIcon, number: t('stats_clients_number') || '8+', label: t('happy_clients') || 'عميل راضي' },
+    { icon: StarIcon, number: t('stats_rating_number') || '4.9', label: t('rating') || 'تقييم' },
   ];
 
   return (
