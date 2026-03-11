@@ -337,6 +337,7 @@ const ServicesSection = () => {
                       fullWidth
                       variant={plan.featured ? 'contained' : 'outlined'}
                       color="primary"
+                      onClick={() => scrollToSection('contact')}
                       sx={{
                         py: 1.5,
                         boxShadow: plan.featured ? '0 0 20px rgba(255,102,0,0.3)' : 'none',
