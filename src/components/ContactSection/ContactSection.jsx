@@ -164,7 +164,7 @@ const ContactSection = () => {
                       >
                         <IconComponent sx={{ color: item.color }} />
                       </Box>
-                      <Typography variant="body1">{item.text}</Typography>
+                      <Typography variant="body1" fontSize={16}>{item.text}</Typography>
                     </InfoItem>
                   );
                 })}

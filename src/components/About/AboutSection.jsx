@@ -6,6 +6,7 @@ import TrendingUpIcon from '@mui/icons-material/TrendingUp';
 import GroupsIcon from '@mui/icons-material/Groups';
 import StarIcon from '@mui/icons-material/Star';
 import { useTranslation } from 'react-i18next';
+import EmailIcon from '@mui/icons-material/Email';
 
 // تأثير الطفو للبطاقة العائمة
 const float = keyframes`
@@ -63,6 +64,25 @@ const AboutSection = () => {
     { icon: TrendingUpIcon, number: t('stats_projects_number') || '10+', label: t('projects_completed') || 'مشروع مكتمل' },
     { icon: GroupsIcon, number: t('stats_clients_number') || '8+', label: t('happy_clients') || 'عميل راضي' },
     { icon: StarIcon, number: t('stats_rating_number') || '4.9', label: t('rating') || 'تقييم' },
+  ];
+
+  const team = [
+    {
+      name: 'Mohammad Amen Aabed',
+      roleKey: 'role_cto',
+      email: 'mohammad.amen.abed.2025@gmail.com'
+    },
+    {
+      name: 'Omar Alnweisr ',
+      roleKey: 'role_ceo',
+      highlight: true,
+      email: 'Omar.nwesr@yahoo.com'
+    },
+    {
+      name: 'Mohammad Alhmaidi',
+      roleKey: 'role_operations',
+      email: 'msy47460@gmail.com'
+    },
   ];
 
   return (
@@ -147,6 +167,104 @@ const AboutSection = () => {
             );
           })}
         </Grid>
+
+        {/* Management team */}
+        <Box sx={{ mt: 8 }}>
+          <Typography
+            variant="h5"
+            sx={{
+              mb: 3,
+              fontWeight: 700,
+              fontSize: { xs: '1.3rem', md: '1.6rem' },
+            }}
+          >
+            {t('management_title')}
+          </Typography>
+
+          <Grid container spacing={3} justifyContent="center" alignItems="stretch">
+            {team.map((member, index) => {
+              const isLead = !!member.highlight;
+              return (
+                <Grid item xs={12} sm={4} key={member.name}>
+                  <Card
+                    sx={{
+                      height: '100%',
+                      width: {xs: '100%', sm: 300, md: 380},
+                      textAlign: 'center',
+                      borderRadius: 3,
+                      border: `1px solid ${isLead ? theme.palette.primary.main : theme.palette.divider}`,
+                      background: isLead
+                        ? `linear-gradient(135deg, ${theme.palette.primary.main}15, transparent)`
+                        : 'rgba(255,255,255,0.01)',
+                      boxShadow: isLead ? theme.shadows[10] : theme.shadows[3],
+                      transform: isLead ? 'scale(1.05)' : 'scale(1)',
+                      transition: 'all 0.3s ease',
+                      '&:hover': {
+                        transform: isLead ? 'scale(1.07)' : 'translateY(-6px)',
+                        boxShadow: theme.shadows[14],
+                      },
+                    }}
+                  >
+                    <CardContent sx={{ py: 4 }}>
+                      <Avatar
+                        sx={{
+                          mx: 'auto',
+                          mb: 2,
+                          width: isLead ? 88 : 72,
+                          height: isLead ? 88 : 72,
+                          fontSize: isLead ? 28 : 22,
+                          bgcolor: 'primary.main',
+                          color: 'white',
+                        }}
+                      >
+                        {member.name.charAt(0)}
+                      </Avatar>
+                      <Typography
+                        variant={isLead ? 'h6' : 'subtitle1'}
+                        fontWeight={isLead ? 800 : 700}
+                        sx={{ mb: 0.5 }}
+                      >
+                        {member.name}
+                      </Typography>
+                      <Typography
+                        variant="body2"
+                        color="primary.main"
+                        sx={{ mb: isLead ? 1.5 : 1 }}
+                      >
+                        {t(member.roleKey)}
+                      </Typography>
+                      <Typography
+                        variant="body2"
+                        color="text.secondary"
+                        sx={{
+                          fontSize: { xs: '0.8rem', md: '0.85rem' },
+                          lineHeight: 1.7,
+                        }}
+                      >
+                        {isLead
+                          ? t('management_lead_desc')
+                          : t('management_member_desc')}
+                      </Typography>
+                      <Typography
+                        variant="body2"
+                        color="text.secondary"
+                        sx={{
+                          fontSize: '0.7rem',
+                          lineHeight: 1.7,
+                          mt: 1,
+                         
+                        }}
+                      >
+                        <EmailIcon sx={{ fontSize: 16, color: 'text.secondary', mx: 1 }} />
+                        {member.email}
+                      </Typography>
+                    </CardContent>
+                  </Card>
+                </Grid>
+              );
+            })}
+          </Grid>
+        </Box>
 
       </Container>
     </Box>
