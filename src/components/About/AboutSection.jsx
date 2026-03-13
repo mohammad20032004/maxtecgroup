@@ -68,17 +68,19 @@ const AboutSection = () => {
 
   const team = [
     {
-      name: 'Mohammad Amen Aabed',
+      avatar: '/team/mohammad-amen-abed.jpg',
       roleKey: 'role_cto',
       email: 'mohammad.amen.abed.2025@gmail.com'
     },
     {
+      avatar: 'https://media.licdn.com/dms/image/v2/D4D03AQF_21-9ZmE9gg/profile-displayphoto-shrink_400_400/C5603AQF_21-9ZmE9gg?e=1753276800&v=beta&t=Kt6wMZfNqz4YFZFz62Uj117LqOZ5mRkIYk-pCnTQ9sM',
       name: 'Omar Alnweisr ',
       roleKey: 'role_ceo',
       highlight: true,
       email: 'Omar.nwesr@yahoo.com'
     },
     {
+      avatar: 'https://media.licdn.com/dms/image/v2/D4D03AQF_21-9ZmE9gg/profile-displayphoto-shrink_400_400/C5603AQF_21-9ZmE9gg?e=1753276800&v=beta&t=Kt6wMZfNqz4YFZFz62Uj117LqOZ5mRkIYk-pCnTQ9sM',
       name: 'Mohammad Alhmaidi',
       roleKey: 'role_operations',
       email: 'msy47460@gmail.com'
@@ -169,13 +171,14 @@ const AboutSection = () => {
         </Grid>
 
         {/* Management team */}
-        <Box sx={{ mt: 8 }}>
+        <Box sx={{ mt: 10 }} textAlign={'center'}>
           <Typography
             variant="h5"
             sx={{
               mb: 3,
-              fontWeight: 700,
+              fontWeight: 900,
               fontSize: { xs: '1.3rem', md: '1.6rem' },
+              
             }}
           >
             {t('management_title')}
@@ -216,9 +219,9 @@ const AboutSection = () => {
                           bgcolor: 'primary.main',
                           color: 'white',
                         }}
-                      >
-                        {member.name.charAt(0)}
-                      </Avatar>
+                        src={member.avatar}
+                        alt={member.name}
+                      />
                       <Typography
                         variant={isLead ? 'h6' : 'subtitle1'}
                         fontWeight={isLead ? 800 : 700}
@@ -252,10 +255,10 @@ const AboutSection = () => {
                           fontSize: '0.7rem',
                           lineHeight: 1.7,
                           mt: 1,
-                         
+                         color: 'primary.main'
                         }}
                       >
-                        <EmailIcon sx={{ fontSize: 16, color: 'text.secondary', mx: 1 }} />
+                        <EmailIcon sx={{ fontSize: 16, mx: 1 }} />
                         {member.email}
                       </Typography>
                     </CardContent>

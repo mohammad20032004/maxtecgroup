@@ -1,9 +1,10 @@
 import React from 'react';
 import { Box, Container, Typography, Grid, Stack, IconButton, Divider } from '@mui/material';
 import { useTranslation } from 'react-i18next';
-import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import GitHubIcon from '@mui/icons-material/GitHub';
 import FacebookIcon from '@mui/icons-material/Facebook';
+import EmailIcon from '@mui/icons-material/Email';
+import LocationOnIcon from '@mui/icons-material/LocationOn';
 
 const Footer = ({ onOpenPrivacy, onOpenRefund, onOpenCookies, onOpenTerms }) => {
   const { t } = useTranslation();
@@ -27,29 +28,29 @@ const Footer = ({ onOpenPrivacy, onOpenRefund, onOpenCookies, onOpenTerms }) => 
             <Typography variant="body2" color="grey.400" sx={{ mb: 3, lineHeight: 1.8, fontSize: { xs: '0.85rem', md: '0.875rem' } }}>
               {t('hero_desc').substring(0, 120)}...
             </Typography>
-                <Stack direction="row" spacing={1}>
-                  {[
-                    { Icon: LinkedInIcon, href: '#' },
-                    { Icon: FacebookIcon, href: 'https://www.facebook.com/share/14XnwSYsWeS/' },
-                    { Icon: GitHubIcon, href: 'https://github.com/maxtecgroup' },
-                  ].map(({ Icon, href }, i) => (
-                    <IconButton
-                      key={i}
-                      component="a"
-                      href={href}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      sx={{
-                        bgcolor: 'primary.main',
-                        color: 'white',
-                        '&:hover': { bgcolor: 'primary.dark', transform: 'translateY(-4px)' },
-                        transition: 'all 0.3s ease',
-                      }}
-                    >
-                      <Icon />
-                    </IconButton>
-                  ))}
-                </Stack>
+            <Stack direction="row" spacing={1}>
+              {[
+                /*{ Icon: LinkedInIcon, href: '#' },*/
+                { Icon: FacebookIcon, href: 'https://www.facebook.com/share/14XnwSYsWeS/' },
+                { Icon: GitHubIcon, href: 'https://github.com/maxtecgroup' },
+              ].map(({ Icon, href }, i) => (
+                <IconButton
+                  key={i}
+                  component="a"
+                  href={href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  sx={{
+                    bgcolor: 'primary.main',
+                    color: 'white',
+                    '&:hover': { bgcolor: 'primary.dark', transform: 'translateY(-4px)' },
+                    transition: 'all 0.3s ease',
+                  }}
+                >
+                  <Icon />
+                </IconButton>
+              ))}
+            </Stack>
           </Grid>
 
           <Grid item xs={12} md={4}>
@@ -82,13 +83,12 @@ const Footer = ({ onOpenPrivacy, onOpenRefund, onOpenCookies, onOpenTerms }) => 
             </Typography>
             <Stack spacing={1}>
               <Typography variant="body2" color="grey.400">
-                📧 maxtecgroup.co@gmail.com
+                <EmailIcon
+                 sx={{ fontSize: 16, mx: 1 }} /> maxtecgroup.co@gmail.com
               </Typography>
               <Typography variant="body2" color="grey.400">
-                📞 +44 20 1234 5678
-              </Typography>
-              <Typography variant="body2" color="grey.400">
-                📍 London, United Kingdom
+                <LocationOnIcon
+                 sx={{ fontSize: 16, mx: 1 }} />  London, United Kingdom
               </Typography>
               <Typography
                 component="button"

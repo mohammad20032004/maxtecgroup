@@ -105,7 +105,6 @@ const ContactSection = () => {
 
   const contactInfo = [
     { icon: EmailIcon, text: 'maxtecgroup.co@gmail.com', color: '#FF6600' },
-    { icon: PhoneIcon, text: '+44 20 1234 5678', color: '#7877C6' },
     { icon: LocationOnIcon, text: 'London, United Kingdom', color: '#FF6767' },
   ];
 
@@ -121,7 +120,7 @@ const ContactSection = () => {
       }}
     >
       <Container
-        maxWidth="lg"
+        maxWidth="xl"
         sx={{
           direction: isArabic ? 'rtl' : 'ltr',
         }}
@@ -141,7 +140,7 @@ const ContactSection = () => {
         <Grid container spacing={isMdUp ? 6 : 4} justifyContent="center" alignItems="stretch">
           {/* Contact info card */}
           <Grid item xs={12} md={5} sx={{ order: isMdUp ? 1 : 2 }}>
-            <ContactCard elevation={2}>
+            <ContactCard elevation={2} sx={{ width: {xs: '100%', md: 500} }}>
               <Typography variant="h5" fontWeight="bold" sx={{ mb: 4 }}>
                 {t('contact_info_title')}
               </Typography>
@@ -164,7 +163,7 @@ const ContactSection = () => {
                       >
                         <IconComponent sx={{ color: item.color }} />
                       </Box>
-                      <Typography variant="body1" fontSize={16}>{item.text}</Typography>
+                      <Typography variant="body1" fontSize={isMdUp ? 18 : 14}>{item.text}</Typography>
                     </InfoItem>
                   );
                 })}
@@ -176,7 +175,7 @@ const ContactSection = () => {
                 </Typography>
                 <Stack direction="row" spacing={1}>
                   {[
-                    { Icon: LinkedInIcon, href: '#' },
+                    /*{ Icon: LinkedInIcon, href: '#' },*/
                     { Icon: FacebookIcon, href: 'https://www.facebook.com/share/14XnwSYsWeS/' },
                     { Icon: GitHubIcon, href: 'https://github.com/maxtecgroup' },
                   ].map(({ Icon, href }, i) => (
@@ -203,7 +202,7 @@ const ContactSection = () => {
 
           {/* Contact form card */}
           <Grid item xs={12} md={7} sx={{ order: isMdUp ? 2 : 1 }}>
-            <ContactCard elevation={2}>
+            <ContactCard elevation={2} sx={{ width: {xs: '100%', md: 500} }}>
               <Typography variant="h5" fontWeight="bold" sx={{ mb: 4 }}>
                 {t('form_btn')}
               </Typography>
