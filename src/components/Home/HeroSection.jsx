@@ -85,10 +85,15 @@ const HeroSection = () => {
   const theme = useTheme();
   const isMdUp = useMediaQuery(theme.breakpoints.up('md'));
 
-  const scrollToAbout = () => {
-    const aboutSection = document.getElementById('about');
-    if (aboutSection) {
-      aboutSection.scrollIntoView({ behavior: 'smooth' });
+  const scrollWithOffset = (sectionId) => {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      const navbarHeight = 80;
+      const elementPosition = element.offsetTop - navbarHeight;
+      window.scrollTo({
+        top: elementPosition,
+        behavior: 'smooth',
+      });
     }
   };
 
@@ -199,7 +204,7 @@ const HeroSection = () => {
             variant="contained"
             color="primary"
             size="large"
-            onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
+            onClick={() => scrollWithOffset('contact')}
             sx={{
 
               boxShadow: '0 0 20px rgba(255,102,0,0.4)',
@@ -216,7 +221,7 @@ const HeroSection = () => {
             variant="outlined"
             color="inherit"
             size="large"
-            onClick={() => document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' })}
+            onClick={() => scrollWithOffset('about')}
             sx={{
               borderColor: 'rgba(255,255,255,0.3)',
               color: 'rgba(255,255,255,0.7)',
@@ -232,7 +237,7 @@ const HeroSection = () => {
         </Stack>
       </Container>
 
-      <ScrollIndicator onClick={scrollToAbout}>
+      <ScrollIndicator onClick={() => scrollWithOffset('about')}>
         <KeyboardArrowDownIcon fontSize="large" />
       </ScrollIndicator>
     </HeroWrapper>

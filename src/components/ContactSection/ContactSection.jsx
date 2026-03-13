@@ -46,6 +46,7 @@ const ContactSection = () => {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [status, setStatus] = useState({ type: null, message: '' }); // type: 'success' | 'error' | null
+  const [errors, setErrors] = useState({});
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -53,6 +54,17 @@ const ContactSection = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    const newErrors = {};
+    if (!formData.name.trim()) newErrors.name = t('form_name') + ' ' + t('is_required', { defaultValue: '' });
+    if (!formData.email.match(/^[^\s@]+@[^\s@]+\.[^\s@]+$/)) newErrors.email = t('invalid_email') || 'Please enter a valid email.';
+    if (!formData.message.trim() || formData.message.trim().length < 10) {
+      newErrors.message = t('message_too_short') || 'Message should be at least 10 characters.';
+    }
+    if (Object.keys(newErrors).length > 0) {
+      setErrors(newErrors);
+      return;
+    }
+    setErrors({});
     setIsSubmitting(true);
     setStatus({ type: null, message: '' });
 
@@ -185,6 +197,7 @@ const ContactSection = () => {
                       href={href}
                       target="_blank"
                       rel="noopener noreferrer"
+                      aria-label={href.includes('facebook') ? 'Open MaxTec Group Facebook page' : 'Open MaxTec Group GitHub profile'}
                       sx={{
                         bgcolor: 'primary.main',
                         color: 'white',
@@ -228,6 +241,8 @@ const ContactSection = () => {
                     value={formData.name}
                     onChange={handleChange}
                     required
+                    error={!!errors.name}
+                    helperText={errors.name}
                     InputLabelProps={{
                       sx: {
                         ...(isArabic && { right: 0, left: 'auto', transformOrigin: 'top right' }),
@@ -247,6 +262,8 @@ const ContactSection = () => {
                     value={formData.email}
                     onChange={handleChange}
                     required
+                    error={!!errors.email}
+                    helperText={errors.email}
                     InputLabelProps={{
                       sx: {
                         ...(isArabic && { right: 0, left: 'auto', transformOrigin: 'top right' }),
@@ -316,6 +333,8 @@ const ContactSection = () => {
                     value={formData.message}
                     onChange={handleChange}
                     required
+                    error={!!errors.message}
+                    helperText={errors.message}
                     InputLabelProps={{
                       sx: {
                         ...(isArabic && { right: 0, left: 'auto', transformOrigin: 'top right' }),

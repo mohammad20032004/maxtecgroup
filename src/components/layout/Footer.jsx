@@ -40,6 +40,7 @@ const Footer = ({ onOpenPrivacy, onOpenRefund, onOpenCookies, onOpenTerms }) => 
                   href={href}
                   target="_blank"
                   rel="noopener noreferrer"
+                  aria-label={href.includes('facebook') ? 'Open MaxTec Group Facebook page' : 'Open MaxTec Group GitHub profile'}
                   sx={{
                     bgcolor: 'primary.main',
                     color: 'white',

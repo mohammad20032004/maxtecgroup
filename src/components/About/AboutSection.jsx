@@ -68,19 +68,20 @@ const AboutSection = () => {
 
   const team = [
     {
-      avatar: '/team/mohammad-amen-abed.jpg',
+      avatar: '/team/Mohammad-amen-abed.jpg',
+      name: 'Mohammad Amen Aabed',
       roleKey: 'role_cto',
       email: 'mohammad.amen.abed.2025@gmail.com'
     },
     {
-      avatar: 'https://media.licdn.com/dms/image/v2/D4D03AQF_21-9ZmE9gg/profile-displayphoto-shrink_400_400/C5603AQF_21-9ZmE9gg?e=1753276800&v=beta&t=Kt6wMZfNqz4YFZFz62Uj117LqOZ5mRkIYk-pCnTQ9sM',
+      avatar: '/team/Omar-nwesir.jpg',
       name: 'Omar Alnweisr ',
       roleKey: 'role_ceo',
       highlight: true,
       email: 'Omar.nwesr@yahoo.com'
     },
     {
-      avatar: 'https://media.licdn.com/dms/image/v2/D4D03AQF_21-9ZmE9gg/profile-displayphoto-shrink_400_400/C5603AQF_21-9ZmE9gg?e=1753276800&v=beta&t=Kt6wMZfNqz4YFZFz62Uj117LqOZ5mRkIYk-pCnTQ9sM',
+      avatar: '/team/Mohammad-alhmaidi.jpg',
       name: 'Mohammad Alhmaidi',
       roleKey: 'role_operations',
       email: 'msy47460@gmail.com'
@@ -246,7 +247,7 @@ const AboutSection = () => {
                       >
                         {isLead
                           ? t('management_lead_desc')
-                          : t('management_member_desc')}
+                          : member.name === 'Mohammad Amen Aabed'? t('management_member_desc'): t('management_member_desc_ope')}
                       </Typography>
                       <Typography
                         variant="body2"
