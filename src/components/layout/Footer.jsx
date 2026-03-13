@@ -5,7 +5,7 @@ import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import GitHubIcon from '@mui/icons-material/GitHub';
 import FacebookIcon from '@mui/icons-material/Facebook';
 
-const Footer = ({ onOpenPrivacy }) => {
+const Footer = ({ onOpenPrivacy, onOpenRefund, onOpenCookies, onOpenTerms }) => {
   const { t } = useTranslation();
 
   const quickLinks = [
@@ -103,7 +103,52 @@ const Footer = ({ onOpenPrivacy }) => {
                   cursor: 'pointer',
                 }}
               >
-                <span style={{ color: 'rgba(255,255,255,0.7)' }}>{t('privacy_title')}</span>
+                <span style={{ color: 'rgba(255,255,255,0.7)' }}>{t('privacy_policy_title')}</span>
+              </Typography>
+              <Typography
+                component="button"
+                type="button"
+                onClick={onOpenRefund}
+                variant="body2"
+                style={{
+                  textAlign: 'left',
+                  background: 'transparent',
+                  border: 'none',
+                  padding: 0,
+                  cursor: 'pointer',
+                }}
+              >
+                <span style={{ color: 'rgba(255,255,255,0.7)' }}>{t('refund_policy_title')}</span>
+              </Typography>
+              <Typography
+                component="button"
+                type="button"
+                onClick={onOpenCookies}
+                variant="body2"
+                style={{
+                  textAlign: 'left',
+                  background: 'transparent',
+                  border: 'none',
+                  padding: 0,
+                  cursor: 'pointer',
+                }}
+              >
+                <span style={{ color: 'rgba(255,255,255,0.7)' }}>{t('cookies_policy_title')}</span>
+              </Typography>
+              <Typography
+                component="button"
+                type="button"
+                onClick={onOpenTerms}
+                variant="body2"
+                style={{
+                  textAlign: 'left',
+                  background: 'transparent',
+                  border: 'none',
+                  padding: 0,
+                  cursor: 'pointer',
+                }}
+              >
+                <span style={{ color: 'rgba(255,255,255,0.7)' }}>{t('terms_conditions_title')}</span>
               </Typography>
             </Stack>
           </Grid>

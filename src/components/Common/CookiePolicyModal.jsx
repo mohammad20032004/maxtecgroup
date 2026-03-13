@@ -11,25 +11,18 @@ import {
 } from '@mui/material';
 import { useTranslation } from 'react-i18next';
 
-const PrivacyPolicyModal = ({ open, onClose }) => {
+const CookiePolicyModal = ({ open, onClose }) => {
   const { t, i18n } = useTranslation();
   const isArabic = i18n.language === 'ar';
 
   const sections = [
-    { title: t('privacy_policy_who_we_are'), body: 'Maxtec Group - ' + t('contact_email') },
-    { title: t('privacy_policy_data_collection'), body: t('privacy_policy_intro') },
-    { title: t('privacy_policy_how_we_collect'), body: t('privacy_policy_intro') },
-    { title: t('privacy_policy_how_we_use'), body: t('privacy_policy_intro') },
-    { title: t('privacy_policy_legal_basis'), body: t('privacy_policy_intro') },
-    { title: t('privacy_policy_data_sharing'), body: t('privacy_policy_intro') },
-    { title: t('privacy_policy_international_transfer'), body: t('privacy_policy_intro') },
-    { title: t('privacy_policy_retention'), body: t('privacy_policy_intro') },
-    { title: t('privacy_policy_cookies'), body: t('privacy_policy_intro') },
-    { title: t('privacy_policy_security'), body: t('privacy_policy_intro') },
-    { title: t('privacy_policy_rights'), body: t('privacy_policy_intro') },
-    { title: t('privacy_policy_children'), body: t('privacy_policy_intro') },
-    { title: t('privacy_policy_third_party'), body: t('privacy_policy_intro') },
-    { title: t('privacy_policy_changes'), body: t('privacy_policy_intro') },
+    { title: t('cookies_policy_what_are'), body: t('privacy_policy_intro') },
+    { title: t('cookies_policy_types'), body: t('privacy_policy_intro') },
+    { title: t('cookies_policy_legal_basis'), body: t('privacy_policy_intro') },
+    { title: t('cookies_policy_manage'), body: t('privacy_policy_intro') },
+    { title: t('cookies_policy_third_party'), body: t('privacy_policy_intro') },
+    { title: t('cookies_policy_duration'), body: t('privacy_policy_intro') },
+    { title: t('cookies_policy_changes'), body: t('privacy_policy_intro') },
   ];
 
   return (
@@ -38,7 +31,7 @@ const PrivacyPolicyModal = ({ open, onClose }) => {
       onClose={onClose}
       fullWidth
       maxWidth="md"
-      aria-labelledby="privacy-policy-title"
+      aria-labelledby="cookies-policy-title"
       PaperProps={{
         sx: {
           direction: isArabic ? 'rtl' : 'ltr',
@@ -49,8 +42,8 @@ const PrivacyPolicyModal = ({ open, onClose }) => {
         },
       }}
     >
-      <DialogTitle id="privacy-policy-title" sx={{ fontWeight: 800, fontSize: '1.6rem', pt: 3 }}>
-        {t('privacy_policy_title')}
+      <DialogTitle id="cookies-policy-title" sx={{ fontWeight: 800, fontSize: '1.6rem', pt: 3 }}>
+        {t('cookies_policy_title')}
       </DialogTitle>
       <Divider sx={{ borderColor: 'rgba(255,255,255,0.08)' }} />
       <DialogContent sx={{ pt: 3, maxHeight: '70vh', overflow: 'auto' }}>
@@ -84,4 +77,4 @@ const PrivacyPolicyModal = ({ open, onClose }) => {
   );
 };
 
-export default PrivacyPolicyModal;
+export default CookiePolicyModal;
