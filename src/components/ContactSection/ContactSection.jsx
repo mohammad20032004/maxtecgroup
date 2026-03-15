@@ -4,10 +4,8 @@ import { styled, useTheme } from '@mui/material/styles';
 import { useTranslation } from 'react-i18next';
 import emailjs from '@emailjs/browser';
 import EmailIcon from '@mui/icons-material/Email';
-import PhoneIcon from '@mui/icons-material/Phone';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 import SendIcon from '@mui/icons-material/Send';
-import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import GitHubIcon from '@mui/icons-material/GitHub';
 import FacebookIcon from '@mui/icons-material/Facebook';
 const ContactCard = styled(Paper)(({ theme }) => ({
@@ -185,7 +183,7 @@ const ContactSection = () => {
                 <Typography variant="h6" fontWeight="bold" sx={{ mb: 2 }}>
                   Follow Us
                 </Typography>
-                <Stack direction="row" spacing={1}>
+                <Stack direction="row" spacing={1} gap={0.2}>
                   {[
                     /*{ Icon: LinkedInIcon, href: '#' },*/
                     { Icon: FacebookIcon, href: 'https://www.facebook.com/share/14XnwSYsWeS/' },
@@ -201,6 +199,7 @@ const ContactSection = () => {
                       sx={{
                         bgcolor: 'primary.main',
                         color: 'white',
+                        
                         '&:hover': { bgcolor: 'primary.dark', transform: 'translateY(-4px)' },
                         transition: 'all 0.3s ease',
                       }}
@@ -245,7 +244,7 @@ const ContactSection = () => {
                     helperText={errors.name}
                     InputLabelProps={{
                       sx: {
-                        ...(isArabic && { right: 0, left: 'auto', transformOrigin: 'top right' }),
+                        ...(isArabic && { right: 25, left: 'auto', transformOrigin: 'top right' }),
                       },
                     }}
                     inputProps={{
@@ -266,7 +265,7 @@ const ContactSection = () => {
                     helperText={errors.email}
                     InputLabelProps={{
                       sx: {
-                        ...(isArabic && { right: 0, left: 'auto', transformOrigin: 'top right' }),
+                        ...(isArabic && { right: 25, left: 'auto', transformOrigin: 'top right' }),
                       },
                     }}
                     inputProps={{
@@ -285,7 +284,7 @@ const ContactSection = () => {
                     required
                     InputLabelProps={{
                       sx: {
-                        ...(isArabic && { right: 0, left: 'auto', transformOrigin: 'top right' }),
+                        ...(isArabic && { right: 55, left: 'auto', transformOrigin: 'top right' }),
                       },
                     }}
                     inputProps={{
@@ -310,7 +309,7 @@ const ContactSection = () => {
                     onChange={handleChange}
                     InputLabelProps={{
                       sx: {
-                        ...(isArabic && { right: 0, left: 'auto', transformOrigin: 'top right' }),
+                        ...(isArabic && { right: 55, left: 'auto', transformOrigin: 'top right' }),
                       },
                     }}
                     inputProps={{
@@ -337,7 +336,7 @@ const ContactSection = () => {
                     helperText={errors.message}
                     InputLabelProps={{
                       sx: {
-                        ...(isArabic && { right: 0, left: 'auto', transformOrigin: 'top right' }),
+                        ...(isArabic && { right: 25, left: 'auto', transformOrigin: 'top right' }),
                       },
                     }}
                     inputProps={{
@@ -350,7 +349,7 @@ const ContactSection = () => {
                     type="submit"
                     variant="contained"
                     size="large"
-                    endIcon={<SendIcon />}
+                    endIcon={<SendIcon sx={{transform : isArabic ?' ScaleX(-1)' : 'none', mx: 1}}/>}
                     disabled={isSubmitting}
                     sx={{
                       py: 1.5,

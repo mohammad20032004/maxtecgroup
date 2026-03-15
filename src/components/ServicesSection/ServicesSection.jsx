@@ -19,7 +19,7 @@ const fadeIn = keyframes`
 
 const ServiceCard = styled(Card)(({ theme }) => ({
   height: '100%',
-  
+
   background: theme.palette.background.paper,
   border: `1px solid ${theme.palette.divider}`,
   borderRadius: theme.spacing(2),
@@ -28,25 +28,12 @@ const ServiceCard = styled(Card)(({ theme }) => ({
   cursor: 'pointer',
   position: 'relative',
   overflow: 'hidden',
-  '&::before': {
-    content: '""',
-    position: 'absolute',
-    top: 0,
-    left: 0,
-    right: 0,
-    height: '4px',
-    background: `linear-gradient(90deg, ${theme.palette.primary.main}, ${theme.palette.secondary.main})`,
-    transform: 'scaleX(0)',
-    transformOrigin: 'left',
-    transition: 'transform 0.4s ease',
-  },
+
   '&:hover': {
     transform: 'translateY(-12px)',
     boxShadow: theme.shadows[20],
     borderColor: theme.palette.primary.main,
-    '&::before': {
-      transform: 'scaleX(1)',
-    },
+
     '& .service-icon': {
       transform: 'scale(1.1) rotate(5deg)',
     },
@@ -82,9 +69,10 @@ const PricingCard = styled(Card)(({ theme, featured }) => ({
     boxShadow: featured ? `0 20px 60px ${theme.palette.primary.main}40` : theme.shadows[12],
   },
 }));
- 
+
 const ServicesSection = () => {
-  const { t } = useTranslation();
+  const { t,i18n } = useTranslation();
+  const isArabic = i18n.language === 'ar';
   const theme = useTheme();
 
   const services = [
@@ -255,7 +243,7 @@ const ServicesSection = () => {
                       <Typography variant="h6" fontWeight="bold" color="primary.main">
                         {service.price}
                       </Typography>
-                      <ArrowForwardIcon className="arrow-icon" sx={{ color: 'primary.main', transition: 'all 0.3s ease' }} />
+                      <ArrowForwardIcon className="arrow-icon" sx={{ color: 'primary.main', transition: 'all 0.3s ease', transform : isArabic ?' ScaleX(-1)' : 'none'}} />
                     </Box>
                   </CardContent>
                 </ServiceCard>
@@ -272,7 +260,7 @@ const ServicesSection = () => {
           <Grid container spacing={3} justifyContent={'center'}>
             {whyChoose.map((item, index) => (
               <Grid item xs={12} sm={6} md={3} key={index}>
-                <WhyChooseCard sx={{width: {xs: '100%', sm: 350, md: 400}, height: {xs: 'auto',sm:300, md: 300}, animationDelay: `${index * 0.1}s`}}>
+                <WhyChooseCard sx={{ width: { xs: '100%', sm: 350, md: 400 }, height: { xs: 'auto', sm: 300, md: 300 }, animationDelay: `${index * 0.1}s` }}>
                   <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, mb: 2 }}>
                     <StarIcon sx={{ color: 'primary.main', fontSize: 28 }} />
                     <Typography variant="h6" fontWeight="bold">
@@ -299,14 +287,14 @@ const ServicesSection = () => {
           <Grid container spacing={4} sx={{ justifyContent: 'center', alignItems: 'center' }}>
             {pricingPlans.map((plan, index) => (
               <Grid item xs={12} sm={12} md={4} key={index}>
-                <PricingCard featured={plan.featured} sx={{ 
-                  width: {xs: '100%',lg: 350, xl: 400}, 
-                  animation: `${fadeIn} 0.6s ease-out`, 
+                <PricingCard featured={plan.featured} sx={{
+                  width: { xs: '100%', lg: 350, xl: 400 },
+                  animation: `${fadeIn} 0.6s ease-out`,
                   animationDelay: `${index * 0.2}s`
-                 }}
-                 >
+                }}
+                >
                   {plan.featured && (
-                    <Box sx={{ position: 'absolute', top: -12, left: '50%', transform: 'translateX(-50%)' }}>
+                    <Box sx={{ position: 'absolute', top: -6, left: '50%', transform: 'translateX(-50%)' }}>
                       <Chip label={t('most_popular')} color="primary" />
                     </Box>
                   )}

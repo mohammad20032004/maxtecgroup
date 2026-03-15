@@ -8,11 +8,6 @@ import StarIcon from '@mui/icons-material/Star';
 import { useTranslation } from 'react-i18next';
 import EmailIcon from '@mui/icons-material/Email';
 
-// تأثير الطفو للبطاقة العائمة
-const float = keyframes`
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-15px); }
-`;
 
 const slideUp = keyframes`
   from { opacity: 0; transform: translateY(30px); }
@@ -133,7 +128,7 @@ const AboutSection = () => {
 
         {features.map((feature, index) => (
 
-          <FeatureItem>
+          <FeatureItem key={index}>
             <CheckCircleIcon sx={{ color: 'primary.main', fontSize: 24 }} />
             <Typography variant="body1" fontWeight="600">
               {feature.label}
