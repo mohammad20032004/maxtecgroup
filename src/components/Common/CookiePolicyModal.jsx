@@ -52,7 +52,7 @@ const CookiePolicyModal = ({ open, onClose }) => {
         </Typography>
 
         <Box sx={{ mb: 3 }}>
-          <Typography variant="caption" color="grey.500" sx={{ color: 'primary.main', fontWeight: 'bold' }}>
+          <Typography variant="caption" sx={{ color: 'primary.main', fontWeight: 'bold', bgcolor: 'rgba(255,102,0,0.1)', px: 1.5, py: 0.5, borderRadius: 1 }}>
             {t('refund_policy_last_update')}
           </Typography>
         </Box>
