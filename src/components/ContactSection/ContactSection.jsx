@@ -6,6 +6,7 @@ import emailjs from '@emailjs/browser';
 import EmailIcon from '@mui/icons-material/Email';
 import { Phone } from '@mui/icons-material';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
+import WhatsAppIcon from '@mui/icons-material/WhatsApp';
 import SendIcon from '@mui/icons-material/Send';
 import GitHubIcon from '@mui/icons-material/GitHub';
 import FacebookIcon from '@mui/icons-material/Facebook';
@@ -117,6 +118,7 @@ const ContactSection = () => {
   const contactInfo = [
     { icon: EmailIcon, text: 'support@maxtecgroup.net', color: '#FF6600' },
     {icon: Phone, text: '+44 7848 103853',color: '#a10303a7'},
+    {icon: WhatsAppIcon, text: '+44 7347 635364', color: '#25D366' },
     { icon: LocationOnIcon, text: 'London, United Kingdom', color: '#FF6767' },
 
   ];

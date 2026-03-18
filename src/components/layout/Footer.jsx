@@ -5,6 +5,7 @@ import GitHubIcon from '@mui/icons-material/GitHub';
 import FacebookIcon from '@mui/icons-material/Facebook';
 import EmailIcon from '@mui/icons-material/Email';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
+import { WhatsApp } from '@mui/icons-material';
 import Phone from '@mui/icons-material/Phone';
 const Footer = ({ onOpenPrivacy, onOpenRefund, onOpenCookies, onOpenTerms }) => {
   const { t } = useTranslation();
@@ -90,6 +91,10 @@ const Footer = ({ onOpenPrivacy, onOpenRefund, onOpenCookies, onOpenTerms }) => 
               <Typography variant="body2" color="grey.400">
                 <Phone
                  sx={{ fontSize: 16, mx: 1 }} /> +44 7848 103853
+              </Typography>
+              <Typography variant="body2" color="grey.400">
+                <WhatsApp
+                 sx={{ fontSize: 16, mx: 1 }} /> +44 7347 635364
               </Typography>
               <Typography variant="body2" color="grey.400">
                 <LocationOnIcon
