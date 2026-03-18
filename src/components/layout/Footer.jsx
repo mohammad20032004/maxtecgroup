@@ -5,7 +5,7 @@ import GitHubIcon from '@mui/icons-material/GitHub';
 import FacebookIcon from '@mui/icons-material/Facebook';
 import EmailIcon from '@mui/icons-material/Email';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
-
+import Phone from '@mui/icons-material/Phone';
 const Footer = ({ onOpenPrivacy, onOpenRefund, onOpenCookies, onOpenTerms }) => {
   const { t } = useTranslation();
 
@@ -85,7 +85,11 @@ const Footer = ({ onOpenPrivacy, onOpenRefund, onOpenCookies, onOpenTerms }) => 
             <Stack spacing={1}>
               <Typography variant="body2" color="grey.400">
                 <EmailIcon
-                 sx={{ fontSize: 16, mx: 1 }} /> maxtecgroup.co@gmail.com
+                 sx={{ fontSize: 16, mx: 1 }} /> support@maxtecgroup.net
+              </Typography>
+              <Typography variant="body2" color="grey.400">
+                <Phone
+                 sx={{ fontSize: 16, mx: 1 }} /> +44 7848 103853
               </Typography>
               <Typography variant="body2" color="grey.400">
                 <LocationOnIcon
