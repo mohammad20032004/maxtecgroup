@@ -4,6 +4,7 @@ import { styled, useTheme } from '@mui/material/styles';
 import { useTranslation } from 'react-i18next';
 import emailjs from '@emailjs/browser';
 import EmailIcon from '@mui/icons-material/Email';
+import { Phone } from '@mui/icons-material';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 import SendIcon from '@mui/icons-material/Send';
 import GitHubIcon from '@mui/icons-material/GitHub';
@@ -114,8 +115,10 @@ const ContactSection = () => {
   };
 
   const contactInfo = [
-    { icon: EmailIcon, text: 'maxtecgroup.co@gmail.com', color: '#FF6600' },
+    { icon: EmailIcon, text: 'support@maxtecgroup.net', color: '#FF6600' },
+    {icon: Phone, text: '+44 7848 103853',color: '#a10303a7'},
     { icon: LocationOnIcon, text: 'London, United Kingdom', color: '#FF6767' },
+
   ];
 
   const isArabic = i18n.language === 'ar';
