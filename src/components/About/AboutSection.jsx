@@ -6,7 +6,6 @@ import TrendingUpIcon from '@mui/icons-material/TrendingUp';
 import GroupsIcon from '@mui/icons-material/Groups';
 import StarIcon from '@mui/icons-material/Star';
 import { useTranslation } from 'react-i18next';
-import EmailIcon from '@mui/icons-material/Email';
 
 
 const slideUp = keyframes`
@@ -66,20 +65,17 @@ const AboutSection = () => {
       avatar: '/team/Mohammad-amen-abed.jpg',
       name: 'Mohammad Amen Aabed',
       roleKey: 'role_cto',
-      email: 'mohammad.amen.abed.2025@gmail.com'
     },
     {
       avatar: '/team/Omar-nwesir.jpg',
       name: 'Omar Alnweisr ',
       roleKey: 'role_ceo',
       highlight: true,
-      email: 'Omar.nwesr@yahoo.com'
     },
     {
       avatar: '/team/Mohammad-alhmaidi.jpg',
       name: 'Mohammad Alhmaidi',
       roleKey: 'role_operations',
-      email: 'msy47460@gmail.com'
     },
   ];
 
@@ -105,7 +101,7 @@ const AboutSection = () => {
         <Typography
           variant="h2"
           sx={{
-            mb: 3,
+            mb: 6,
             fontWeight: 800,
             fontSize: { xs: '1.75rem', sm: '2.5rem', md: '3rem' },
             '& span': {
@@ -171,7 +167,7 @@ const AboutSection = () => {
           <Typography
             variant="h5"
             sx={{
-              mb: 3,
+              mb: 4,
               fontWeight: 900,
               fontSize: { xs: '1.3rem', md: '1.6rem' },
               
@@ -244,19 +240,7 @@ const AboutSection = () => {
                           ? t('management_lead_desc')
                           : member.name === 'Mohammad Amen Aabed'? t('management_member_desc'): t('management_member_desc_ope')}
                       </Typography>
-                      <Typography
-                        variant="body2"
-                        color="text.secondary"
-                        sx={{
-                          fontSize: '0.7rem',
-                          lineHeight: 1.7,
-                          mt: 1,
-                         color: 'primary.main'
-                        }}
-                      >
-                        <EmailIcon sx={{ fontSize: 16, mx: 1 }} />
-                        {member.email}
-                      </Typography>
+                     
                     </CardContent>
                   </Card>
                 </Grid>
