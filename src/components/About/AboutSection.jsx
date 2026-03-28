@@ -62,8 +62,8 @@ const AboutSection = () => {
 
   const team = [
     {
-      avatar: '/team/Mohammad-amen-abed.jpg',
-      name: 'Mohammad Amen Aabed',
+      avatar: '',
+      name: '',
       roleKey: 'role_cto',
     },
     {
@@ -164,7 +164,7 @@ const AboutSection = () => {
 
         {/* Management team */}
         <Box sx={{ mt: 10 }} textAlign={'center'}>
-          <Typography
+          {/* <Typography
             variant="h5"
             sx={{
               mb: 4,
@@ -176,7 +176,7 @@ const AboutSection = () => {
             {t('management_title')}
           </Typography>
 
-          <Grid container spacing={3} justifyContent="center" alignItems="stretch">
+         <Grid container spacing={3} justifyContent="center" alignItems="stretch">
             {team.map((member, index) => {
               const isLead = !!member.highlight;
               return (
@@ -246,7 +246,7 @@ const AboutSection = () => {
                 </Grid>
               );
             })}
-          </Grid>
+          </Grid>*/}
         </Box>
 
       </Container>

@@ -89,10 +89,6 @@ const Footer = ({ onOpenPrivacy, onOpenRefund, onOpenCookies, onOpenTerms }) => 
                  sx={{ fontSize: 16, mx: 1 }} /> support@maxtecgroup.net
               </Typography>
               <Typography variant="body2" color="grey.400">
-                <Phone
-                 sx={{ fontSize: 16, mx: 1 }} /> +44 7848 103853
-              </Typography>
-              <Typography variant="body2" color="grey.400">
                 <WhatsApp
                  sx={{ fontSize: 16, mx: 1 }} /> +44 7347 635364
               </Typography>
